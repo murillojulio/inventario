@@ -1,9 +1,10 @@
-package com.murillojulio.inventario;
+package com.murillojulio.inventario.mainModule.view;
 
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.murillojulio.inventario.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
