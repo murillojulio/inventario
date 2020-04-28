@@ -1,4 +1,4 @@
-package com.murillojulio.inventario;
+package com.murillojulio.inventario.mainModule.view.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.murillojulio.inventario.R;
+import com.murillojulio.inventario.common.pojo.Product;
 
 import java.util.List;
 
