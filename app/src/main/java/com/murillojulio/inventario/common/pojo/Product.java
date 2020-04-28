@@ -1,4 +1,4 @@
-package com.murillojulio.inventario;
+package com.murillojulio.inventario.common.pojo;
 
 import com.google.firebase.database.Exclude;
 
