@@ -144,17 +144,17 @@ public class MainActivity extends AppCompatActivity implements OnItemCliickListe
 
     @Override
     public void add(Product product) {
-
+        productAdapter.add(product);
     }
 
     @Override
     public void update(Product product) {
-
+        productAdapter.update(product);
     }
 
     @Override
     public void remove(Product product) {
-
+        productAdapter.remove(product);
     }
 
     @Override
