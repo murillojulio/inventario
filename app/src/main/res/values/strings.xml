@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="item_product_count">Nombre:\nCantidad:</string>
     <string name="item_product_data">%s \n(x%d)</string>
+    <string name="main_error_permission_denied">No tienes permisos para esta accion</string>
+    <string name="main_error_server">Error en el servidor, intente mas tarde</string>
+    <string name="main_error_remove">Usted no tiene permisos para eliminar</string>
 </resources>
