@@ -14,9 +14,9 @@ public class MainInteractorClass implements MainInteractor {
     private RealtimeDataBase realtimeDataBase;
 
     public MainInteractorClass() {
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "MainInteractorClass() {realtimeDataBase = new RealtimeDataBase();}");
         /*Aqui inicializamos RealtimeDatabase*/
         realtimeDataBase = new RealtimeDataBase();
-        Log.i(this.toString(), "Constructor inicializa RealtimeDatabase");
     }
 
     @Override
@@ -24,11 +24,12 @@ public class MainInteractorClass implements MainInteractor {
         realtimeDataBase.subscribeToProducts(new ProductsEventListener() {
             @Override
             public void onChildAdded(Product product) {
-                post(product, MainEvent.SUCCESS_ADD);
+                    post(product, MainEvent.SUCCESS_ADD);
             }
 
             @Override
             public void onChildUpdate(Product product) {
+                Log.i("Seg-> MainInteractorCla"+this.getClass().getSimpleName(), "subscribeToProducts()->onChildUpdate(Product product)");
                 post(product, MainEvent.SUCCESS_UPDATE);
             }
 
@@ -75,10 +76,12 @@ public class MainInteractorClass implements MainInteractor {
     }
 
     private void post(Product product, int typeEvent){
+        //Log.i("Seg-> "+this.getClass().getSimpleName(), "post(Product product, int typeEvent){post(product, typeEvent, 0);}");
         post(product, typeEvent, 0);
     }
 
     private void post(Product product, int typeEvent, int resMsg) {
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "post(Product product, int typeEvent"+typeEvent+", int resMsg){ new MainEvent(); EventBus.getDefault().post(mainEvent);}");
         MainEvent mainEvent = new MainEvent();
         mainEvent.setProduct(product);
         mainEvent.setTypeEvent(typeEvent);
