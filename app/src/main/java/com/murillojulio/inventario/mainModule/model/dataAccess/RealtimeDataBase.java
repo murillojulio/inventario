@@ -1,5 +1,7 @@
 package com.murillojulio.inventario.mainModule.model.dataAccess;
 
+import android.util.Log;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +22,7 @@ public class RealtimeDataBase {
     private ChildEventListener mProductsChildEventListener;
 
     public RealtimeDataBase(){
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "RealtimeDataBase() {mDataBaseAPI = FireBaseRealtimeDataBaseAPI.getInstance();}");
         mDataBaseAPI = FireBaseRealtimeDataBaseAPI.getInstance();
     }
 
@@ -38,6 +41,7 @@ public class RealtimeDataBase {
 
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Log.i("Seg-> RealtimeDataBase", "onChildChanged(){listener.onChildUpdate(getProduct(dataSnapshot));}");
                     listener.onChildUpdate(getProduct(dataSnapshot));
 
                 }
