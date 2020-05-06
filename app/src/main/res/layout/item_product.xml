@@ -23,7 +23,7 @@
             android:id="@+id/tvData"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/item.product.count"
+            android:text="@string/item_product_count"
             android:textColor="@android:color/white"
             android:background="@drawable/background_item_product_text"
             android:padding="@dimen/item.product.text.padding"
