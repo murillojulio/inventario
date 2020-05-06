@@ -6,4 +6,8 @@
     <string name="main_error_permission_denied">No tienes permisos para esta accion</string>
     <string name="main_error_server">Error en el servidor, intente mas tarde</string>
     <string name="main_error_remove">Usted no tiene permisos para eliminar</string>
+    <string name="main_dialog_remove_title">Eliminar producto</string>
+    <string name="main_dialog_remove_message">Este producto se eliminará de forma permanente</string>
+    <string name="main_dialog_remove_ok">Eliminar</string>
+    <string name="common_dialog_cancel">Cancelar</string>
 </resources>
