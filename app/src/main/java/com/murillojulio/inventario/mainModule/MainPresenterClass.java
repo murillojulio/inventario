@@ -1,5 +1,7 @@
 package com.murillojulio.inventario.mainModule;
 
+import android.util.Log;
+
 import com.murillojulio.inventario.common.pojo.Product;
 import com.murillojulio.inventario.mainModule.events.MainEvent;
 import com.murillojulio.inventario.mainModule.model.MainInteractor;
@@ -14,12 +16,14 @@ public class MainPresenterClass implements MainPresenter {
     private MainInteractor mainInteractor;
 
     public MainPresenterClass(MainView mainView) {
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "MainPresenterClass(MainView mainView) {new MainInteractorClass()}");
         this.mainView = mainView;
         this.mainInteractor = new MainInteractorClass();
     }
 
     @Override
     public void onCreate() {
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "onCreate() {EventBus.getDefault().register()}");
         EventBus.getDefault().register(this);
     }
 
@@ -30,6 +34,7 @@ public class MainPresenterClass implements MainPresenter {
 
     @Override
     public void onResume() {
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "onResume() {mainInteractor.subscribeToProducts();}");
         mainInteractor.subscribeToProducts();
     }
 
@@ -65,6 +70,7 @@ public class MainPresenterClass implements MainPresenter {
                     mainView.add(mainEvent.getProduct());
                     break;
                 case MainEvent.SUCCESS_UPDATE:
+                    Log.i("Seg-> "+this.getClass().getSimpleName(), "onEventListener(MainEvent mainEvent) {MainEvent.SUCCESS_UPDATE: mainView.update(mainEvent.getProduct());}");
                     mainView.update(mainEvent.getProduct());
                     break;
                 case MainEvent.SUCCESS_REMOVE:
