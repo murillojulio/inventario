@@ -5,6 +5,8 @@ package com.murillojulio.inventario.common.model.dataAccess;
 * sin la problematica de crear una nueva instancia desde varios puntos del proyecto, debido a que
 *  varios modulos necesitaran conectarse a la base de datos. */
 
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,10 +20,12 @@ public class FireBaseRealtimeDataBaseAPI {
     }
 
     public static FireBaseRealtimeDataBaseAPI getInstance(){
+        Log.i("Seg->", "FireBaseRealtimeDataBaseAPI RealtimeDataBase() {mDataBaseAPI = FireBaseRealtimeDataBaseAPI.getInstance();}");
         if (INSTANCE == null){
             INSTANCE = new FireBaseRealtimeDataBaseAPI();
         }
         return INSTANCE;
+
     }
 
     //Referencias
