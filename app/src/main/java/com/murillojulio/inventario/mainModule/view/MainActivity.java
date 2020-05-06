@@ -1,6 +1,10 @@
 package com.murillojulio.inventario.mainModule.view;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,9 +21,11 @@ import com.murillojulio.inventario.mainModule.view.adapters.ProductAdapter;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnItemCliickListe
         configToolbar();
         configAdapter();
         configRecyclerView();
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "onCreate() {new MainPresenterClass()}");
 
         mainPresenter = new MainPresenterClass(this);
         mainPresenter.onCreate();// Aqui se registra en EventBus
@@ -89,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements OnItemCliickListe
     @Override
     protected void onResume(){
         super.onResume();
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "onResume() {mainPresenter.onResume();}");
         mainPresenter.onResume();
     }
 
@@ -149,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements OnItemCliickListe
 
     @Override
     public void update(Product product) {
+        Log.i("Seg-> "+this.getClass().getSimpleName(), "update(Product product) {productAdapter.update(product);}");
         productAdapter.update(product);
     }
 
@@ -174,8 +183,24 @@ public class MainActivity extends AppCompatActivity implements OnItemCliickListe
     }
 
     @Override
-    public void onLongItemCliik(Product product) {
+    public void onLongItemCliik(final Product product) {
 
+        Vibrator vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null){
+            vibrator.vibrate(60);
+        }
+
+       new AlertDialog.Builder(this)
+               .setTitle(R.string.main_dialog_remove_title)
+               .setMessage(R.string.main_dialog_remove_message)
+               .setPositiveButton(R.string.main_dialog_remove_ok, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       mainPresenter.remove(product);
+                   }
+               })
+               .setNegativeButton(R.string.common_dialog_cancel, null)
+               .show();
     }
 
 }
